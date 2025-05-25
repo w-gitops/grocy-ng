@@ -84,7 +84,7 @@ Grocy.Components.CameraBarcodeScanner.StartScanning = function()
 
 			Grocy.Components.CameraBarcodeScanner.StopScanning();
 
-			$(document).trigger("Grocy.BarcodeScanned", [result.getText(), Grocy.Components.CameraBarcodeScanner.CurrentTarget]);
+			$(document).trigger("Grocy.BarcodeScanned", [result.getText(), Grocy.Components.CameraBarcodeScanner.CurrentTarget, $(Grocy.Components.CameraBarcodeScanner.CurrentTarget).data("target-type")]);
 			$(".modal").last().modal("hide");
 		}
 	)

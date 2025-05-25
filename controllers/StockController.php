@@ -239,6 +239,20 @@ class StockController extends BaseController
 		return $this->ServeGrocycodeImage($request, $response, $gc);
 	}
 
+	public function LocationBarcodesForm(Request $request, Response $response, array $args)
+	{
+		$location = $this->getDatabase()->locations($args['locationId']);
+
+		// For 'create' mode, we pass the location object.
+		// The actual barcode data will be empty or handled by the frontend JS for a new barcode.
+		return $this->renderPage($response, 'locationbarcodeform', [
+			'mode' => 'create', // Assuming we are always creating a new barcode from this link
+			'location' => $location,
+			'barcode' => null, // No existing barcode when adding a new one initially
+			'userfields' => $this->getUserfieldsService()->GetFields('location_barcodes') // Assuming 'location_barcodes' is the entity for userfields
+		]);
+	}
+
 	public function ProductGroupEditForm(Request $request, Response $response, array $args)
 	{
 		if ($args['productGroupId'] == 'new')

@@ -115,6 +115,12 @@
 							title="{{ $__t('Delete this item') }}">
 							<i class="fa-solid fa-trash"></i>
 						</a>
+						<a class="btn btn-outline-secondary btn-sm show-as-dialog-link"
+							href="{{ $U('/location/') }}{{ $location->id }}/barcode?embedded"
+							data-toggle="tooltip"
+							title="{{ $__t('Add barcode to this location') }}">
+							<i class="fa-solid fa-barcode"></i>
+						</a>
 					</td>
 					<td>
 						{{ $location->name }}
