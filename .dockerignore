@@ -1,0 +1,39 @@
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Local development and data files
+.vscode/
+data/
+# If you have other local configuration or large media assets not needed in the image, add them here.
+# For example:
+# node_modules/
+# .env
+
+# Devtools and temporary files from devtools
+.devtools/
+
+# Changelog (usually not needed in runtime image)
+changelog/
+
+# README and LICENSE (optional, some prefer to keep them)
+# README.md
+# LICENSE
+
+# Any local user-uploaded files or cache if not already covered by 'data/'
+# public/uploads/
+# tmp/
+# cache/
+
+# Composer cache files (though vendor is needed)
+.composer/cache/
+vendor/bin/phpunit
+vendor/phpunit/
+vendor/phpspec/
+vendor/phpstan/
