@@ -21,6 +21,7 @@ class Grocycode
 	public const BATTERY = 'b';
 	public const CHORE = 'c';
 	public const RECIPE = 'r';
+	public const LOCATION = 'l';
 	public const MAGIC = 'grcy';
 
 	public function __construct(...$args)

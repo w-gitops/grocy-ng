@@ -55,6 +55,7 @@ $app->group('', function (RouteCollectorProxy $group)
 	$group->get('/stocksettings', '\Grocy\Controllers\StockController:StockSettings');
 	$group->get('/locations', '\Grocy\Controllers\StockController:LocationsList');
 	$group->get('/location/{locationId}', '\Grocy\Controllers\StockController:LocationEditForm');
+	$group->get('/location/{locationId}/barcode', '\Grocy\Controllers\StockController:LocationBarcodesForm');
 	$group->get('/stockjournal', '\Grocy\Controllers\StockController:Journal');
 	$group->get('/locationcontentsheet', '\Grocy\Controllers\StockController:LocationContentSheet');
 	$group->get('/quantityunitpluraltesting', '\Grocy\Controllers\StockController:QuantityUnitPluralFormTesting');
@@ -142,6 +143,7 @@ $app->group('/api', function (RouteCollectorProxy $group)
 	$group->get('/objects/{entity}', '\Grocy\Controllers\GenericEntityApiController:GetObjects');
 	$group->get('/objects/{entity}/{objectId}', '\Grocy\Controllers\GenericEntityApiController:GetObject');
 	$group->post('/objects/{entity}', '\Grocy\Controllers\GenericEntityApiController:AddObject');
+	$group->post('/objects/location_barcodes', '\Grocy\Controllers\StockApiController:AddLocationBarcode');
 	$group->put('/objects/{entity}/{objectId}', '\Grocy\Controllers\GenericEntityApiController:EditObject');
 	$group->delete('/objects/{entity}/{objectId}', '\Grocy\Controllers\GenericEntityApiController:DeleteObject');
 	$group->get('/userfields/{entity}/{objectId}', '\Grocy\Controllers\GenericEntityApiController:GetUserfields');

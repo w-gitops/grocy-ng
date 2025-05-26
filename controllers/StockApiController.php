@@ -35,6 +35,41 @@ class StockApiController extends BaseApiController
 		}
 	}
 
+	public function AddLocationBarcode(Request $request, Response $response, array $args)
+	{
+		User::checkPermission($request, User::PERMISSION_MASTER_DATA_EDIT); // Or a more specific permission if available
+
+		try
+		{
+			$requestBody = $this->GetParsedAndFilteredRequestBody($request);
+
+			if ($requestBody === null)
+			{
+				throw new \Exception('Request body could not be parsed (probably invalid JSON format or missing/wrong Content-Type header)');
+			}
+
+			if (!array_key_exists('barcode', $requestBody) || empty($requestBody['barcode']))
+			{
+				throw new \Exception('A barcode is required');
+			}
+
+			if (!array_key_exists('location_id', $requestBody) || !is_numeric($requestBody['location_id']))
+			{
+				throw new \Exception('A location_id is required and must be numeric');
+			}
+
+			// Assuming a method like AddLocationBarcode exists in StockService
+			// This method would handle the database interaction
+			$createdBarcode = $this->getStockService()->AddLocationBarcode($requestBody); 
+
+			return $this->ApiResponse($response, $createdBarcode);
+		}
+		catch (\Exception $ex)
+		{
+			return $this->GenericErrorResponse($response, $ex->getMessage());
+		}
+	}
+
 	public function AddOverdueProductsToShoppingList(Request $request, Response $response, array $args)
 	{
 		User::checkPermission($request, User::PERMISSION_SHOPPINGLIST_ITEMS_ADD);
